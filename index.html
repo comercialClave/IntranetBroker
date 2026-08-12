@@ -153,11 +153,19 @@
             gap: 15px;
         }
 
-        /* Catálogo */
+        /* Catálogo e Dashboards */
         .catalogo-container {
             text-align: center;
         }
         
+        .botoes-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
         .btn-catalogo {
             display: inline-block;
             background-color: var(--highlight);
@@ -168,11 +176,19 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: background-color 0.3s;
-            margin-top: 15px;
         }
 
         .btn-catalogo:hover {
             background-color: #356792;
+        }
+
+        .btn-dash {
+            background-color: transparent;
+            border: 2px solid var(--highlight);
+        }
+
+        .btn-dash:hover {
+            background-color: rgba(70, 130, 180, 0.2);
         }
 
         /* Rodapé */
@@ -203,16 +219,20 @@
 
     <div class="container">
         
-        <!-- Seção Catálogo de Vendas -->
+        <!-- Seção Catálogo de Vendas e Dashboards -->
         <section id="catalogo" class="catalogo-container">
-            <h2>Catálogo de Vendas Oficial</h2>
+            <h2>Catálogo e Dashboards Oficiais</h2>
             <p style="color: var(--text-muted); margin-bottom: 20px;">
-                Acesse o catálogo atualizado no Drive corporativo para visualizar produtos, preços e campanhas ativas.
+                Acesse o catálogo atualizado no Drive corporativo e acompanhe os indicadores de SKUs.
             </p>
-            <a href="https://drive.google.com/file/d/13qzuFq_Irb4EXlHS2XT-L2w4SBOQ2Ps5/view?usp=drive_link" target="_blank" class="btn-catalogo">📂 Acessar Catálogo (Google Drive)</a>
+            
+            <div class="botoes-container">
+                <a href="https://drive.google.com/file/d/13qzuFq_Irb4EXlHS2XT-L2w4SBOQ2Ps5/view?usp=drive_link" target="_blank" class="btn-catalogo">📂 Acessar Catálogo (Google Drive)</a>
+                <a href="https://datastudio.google.com/reporting/8ce3e64d-e554-4764-abc8-f3fb9b9c7a35" target="_blank" class="btn-catalogo btn-dash">📊 Dash SKU's</a>
+            </div>
         </section>
 
-        <!-- Seção Fluxo de Atendimento (NOVA) -->
+        <!-- Seção Fluxo de Atendimento -->
         <section id="fluxo-atendimento">
             <h2>Fluxo de Atendimento e Atividades</h2>
             <p style="color: var(--text-muted);">Diretório de contatos internos para agilizar suas solicitações do dia a dia.</p>
