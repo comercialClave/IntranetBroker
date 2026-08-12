@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet Clave Comercial | Nestlé</title>
+    <style>
+        /* Paleta de Cores baseada na imagem */
+        :root {
+            --bg-color: #0b1d3a; /* Azul muito escuro do fundo */
+            --card-bg: #153257; /* Azul médio das caixas */
+            --highlight: #4682b4; /* Azul claro dos detalhes/botões */
+            --text-main: #ffffff;
+            --text-muted: #a9c2d9;
+            --alert-color: #e5a93e; /* Cor para avisos/urgências */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #09152b 0%, var(--bg-color) 100%);
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Seções */
+        section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--highlight);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Grid de Marcas */
+        .marcas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .marca-card {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--highlight);
+        }
+
+        .marca-card h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        /* Tabela de Fluxo de Atendimento */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .fluxo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .fluxo-table th, .fluxo-table td {
+            padding: 15px;
+            border-bottom: 1px solid #2a4b75;
+            text-align: left;
+        }
+
+        .fluxo-table th {
+            background-color: var(--bg-color);
+            color: var(--highlight);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .fluxo-table tr:hover {
+            background-color: rgba(70, 130, 180, 0.1);
+        }
+
+        .fluxo-table a {
+            color: #8AB9E5;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        .fluxo-table a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .tag-setor {
+            background-color: var(--highlight);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #fff;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .alert-box {
+            margin-top: 25px;
+            padding: 15px 20px;
+            background-color: rgba(229, 169, 62, 0.15);
+            border-left: 4px solid var(--alert-color);
+            border-radius: 0 8px 8px 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Catálogo */
+        .catalogo-container {
+            text-align: center;
+        }
+        
+        .btn-catalogo {
+            display: inline-block;
+            background-color: var(--highlight);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-catalogo:hover {
+            background-color: #356792;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-bg);
+        }
+
+        /* Ondas SVG do rodapé */
+        .wave-container {
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Portal Intranet | Clave Distribuição</h1>
+        <p>Painel Interno de Campanhas, Bônus e Processos - Nestlé</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Seção Catálogo de Vendas -->
+        <section id="catalogo" class="catalogo-container">
+            <h2>Catálogo de Vendas Oficial</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+                Acesse o catálogo atualizado no Drive corporativo para visualizar produtos, preços e campanhas ativas.
+            </p>
+            <a href="https://drive.google.com/file/d/13qzuFq_Irb4EXlHS2XT-L2w4SBOQ2Ps5/view?usp=drive_link" target="_blank" class="btn-catalogo">📂 Acessar Catálogo (Google Drive)</a>
+        </section>
+
+        <!-- Seção Fluxo de Atendimento (NOVA) -->
+        <section id="fluxo-atendimento">
+            <h2>Fluxo de Atendimento e Atividades</h2>
+            <p style="color: var(--text-muted);">Diretório de contatos internos para agilizar suas solicitações do dia a dia.</p>
+            
+            <div class="table-responsive">
+                <table class="fluxo-table">
+                    <thead>
+                        <tr>
+                            <th>Atividade / Solicitação</th>
+                            <th>Responsável / Setor</th>
+                            <th>E-mail Corporativo</th>
+                            <th>WhatsApp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cadastro de clientes</td>
+                            <td><span class="tag-setor">GD</span><br>Francisco</td>
+                            <td><a href="mailto:gd@clavedistribuidora.com.br">✉️ gd@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
+                        </tr>
+                        <tr>
+                            <td>Alteração de limite de clientes</td>
+                            <td><span class="tag-setor">GD</span><br>Francisco</td>
+                            <td><a href="mailto:gd@clavedistribuidora.com.br">✉️ gd@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
+                        </tr>
+                        <tr>
+                            <td>Verificação sobre pedido faturado</td>
+                            <td><span class="tag-setor">CS</span><br>Washington</td>
+                            <td><a href="mailto:cs@clavedistribuidora.com.br">✉️ cs@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
+                        </tr>
+                        <tr>
+                            <td>Processos logísticos INTERNO</td>
+                            <td><span class="tag-setor">Logística</span><br>Guilherme</td>
+                            <td><a href="mailto:logistica@clavedistribuidora.com.br">✉️ logistica@clavedistribuidora.com.br</a></td>
+                            <td><span style="color: var(--text-muted); font-size: 0.9rem;">Não aplicável</span></td>
+                        </tr>
+                        <tr>
+                            <td>Desconto para clientes</td>
+                            <td><span class="tag-setor">Comercial</span><br>Layza (Analista)</td>
+                            <td><a href="mailto:layza.bhering@clavedistribuidora.com.br">✉️ layza.bhering@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699931" target="_blank">📱 (31) 3669-9931</a></td>
+                        </tr>
+                        <tr>
+                            <td>Roteirização de entregas</td>
+                            <td><span class="tag-setor">Transporte</span><br>Victor</td>
+                            <td><a href="mailto:monitoramento@clavedistribuidora.com.br">✉️ monitoramento@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699933" target="_blank">📱 (31) 3669-9933</a></td>
+                        </tr>
+                        <tr>
+                            <td>Alteração de produtos nas bases</td>
+                            <td><span class="tag-setor">Comercial</span><br>Layza (Analista)</td>
+                            <td><a href="mailto:layza.bhering@clavedistribuidora.com.br">✉️ layza.bhering@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699931" target="_blank">📱 (31) 3669-9931</a></td>
+                        </tr>
+                        <tr>
+                            <td>Assuntos relacionados ao DP/RH</td>
+                            <td><span class="tag-setor">RH</span><br>Laís (Assistente)</td>
+                            <td><a href="mailto:dp@clavedistribuidora.com.br">✉️ dp@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699929" target="_blank">📱 (31) 3669-9929</a></td>
+                        </tr>
+                        <tr>
+                            <td>Assuntos relacionados ao financeiro</td>
+                            <td><span class="tag-setor">Financeiro</span><br>Vitória</td>
+                            <td><a href="mailto:financeiro@clavedistribuidora.com.br">✉️ financeiro@clavedistribuidora.com.br</a></td>
+                            <td><a href="https://wa.me/553136699934" target="_blank">📱 (31) 3669-9934</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Alerta de Urgência -->
+            <div class="alert-box">
+                <div style="font-size: 2rem;">⚠️</div>
+                <div>
+                    <strong>Atenção às Situações Urgentes:</strong><br>
+                    Para situações urgentes ou demandas que não se enquadrem nos itens acima da tabela, favor procurar diretamente o seu líder imediato (Supervisor).
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Nestlé e Marcas -->
+        <section id="nestle-marcas">
+            <h2>Portfólio Estratégico Nestlé</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">
+                Diretrizes de foco para as principais marcas distribuídas pela Clave Comercial.
+            </p>
+            
+            <div class="marcas-grid">
+                <div class="marca-card">
+                    <h3>🍫 Garoto</h3>
+                    <p>Foco na distribuição e aumento de positivação em PDVs. Priorizar a linha de tabletes e bombons.</p>
+                </div>
+                
+                <div class="marca-card">
+                    <h3>☕ Nestlé Professional</h3>
+                    <p>Foco em canais de Food Service (padarias, restaurantes e cafeterias). Soluções de alto valor agregado.</p>
+                </div>
+                
+                <div class="marca-card">
+                    <h3>🐾 Purina</h3>
+                    <p>Expansão em petshops especializados e supermercados locais. Destaque para as linhas Pro Plan e Dog Chow.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Efeito de onda no rodapé -->
+    <div class="wave-container">
+        <svg viewBox="0 0 1440 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4682b4" fill-opacity="0.5" d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,96C672,96,768,128,864,138.7C960,149,1056,139,1152,112C1248,85,1344,43,1392,21.3L1440,0L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z"></path>
+            <path fill="#8AB9E5" fill-opacity="0.8" d="M0,64L48,80C96,96,192,128,288,144C384,160,480,160,576,138.7C672,117,768,75,864,64C960,53,1056,75,1152,80C1248,85,1344,75,1392,74.7L1440,75L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z"></path>
+            <path fill="#4682b4" fill-opacity="1" d="M0,192L48,176C96,160,192,128,288,122.7C384,117,480,139,576,149.3C672,160,768,160,864,138.7C960,117,1056,75,1152,64C1248,53,1344,75,1392,85.3L1440,96L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z"></path>
+        </svg>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Clave Distribuição | Intranet Oficial. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
