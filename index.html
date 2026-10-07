@@ -30,9 +30,8 @@
 
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px 10px 20px;
             background: linear-gradient(180deg, #09152b 0%, var(--bg-color) 100%);
-            border-bottom: 2px solid var(--highlight);
         }
 
         header h1 {
@@ -43,6 +42,46 @@
         header p {
             color: var(--text-muted);
             font-size: 1.1rem;
+        }
+
+        /* Navegação por Abas */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: var(--bg-color);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 2px solid var(--highlight);
+            color: var(--text-main);
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(70, 130, 180, 0.2);
+        }
+
+        .tab-btn.active {
+            background-color: var(--highlight);
+            color: #fff;
+        }
+
+        /* Controle de Exibição das Abas */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .container {
@@ -103,6 +142,7 @@
             padding: 15px;
             border-bottom: 1px solid #2a4b75;
             text-align: left;
+            vertical-align: middle;
         }
 
         .fluxo-table th {
@@ -176,6 +216,8 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-catalogo:hover {
@@ -189,6 +231,16 @@
 
         .btn-dash:hover {
             background-color: rgba(70, 130, 180, 0.2);
+        }
+
+        /* Estilização da Aba Documentação */
+        .doc-preview-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid var(--highlight);
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         /* Rodapé */
@@ -217,129 +269,174 @@
         <p>Painel Interno de Campanhas, Bônus e Processos - Nestlé</p>
     </header>
 
+    <!-- Menu de Navegação por Abas -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab('home', event)">🏠 Home</button>
+        <button class="tab-btn" onclick="openTab('documentacao', event)">📄 Documentação</button>
+    </nav>
+
     <div class="container">
         
-        <!-- Seção Catálogo de Vendas e Dashboards -->
-        <section id="catalogo" class="catalogo-container">
-            <h2>Catálogo e Dashboards Oficiais</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">
-                Acesse o catálogo atualizado no Drive corporativo e acompanhe os indicadores de SKUs.
-            </p>
+        <!-- ================= ABA 1: HOME ================= -->
+        <div id="home" class="tab-content active">
             
-            <div class="botoes-container">
-                <a href="https://drive.google.com/file/d/13qzuFq_Irb4EXlHS2XT-L2w4SBOQ2Ps5/view?usp=drive_link" target="_blank" class="btn-catalogo">📂 Acessar Catálogo (Google Drive)</a>
-                <a href="https://datastudio.google.com/reporting/8ce3e64d-e554-4764-abc8-f3fb9b9c7a35" target="_blank" class="btn-catalogo btn-dash">📊 Dash SKU's</a>
-            </div>
-        </section>
+            <!-- Seção Catálogo de Vendas e Dashboards -->
+            <section id="catalogo" class="catalogo-container">
+                <h2>Catálogo e Dashboards Oficiais</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    Acesse o catálogo atualizado no Drive corporativo e acompanhe os indicadores de SKUs.
+                </p>
+                
+                <div class="botoes-container">
+                    <a href="https://drive.google.com/file/d/13qzuFq_Irb4EXlHS2XT-L2w4SBOQ2Ps5/view?usp=drive_link" target="_blank" class="btn-catalogo">📂 Acessar Catálogo (Google Drive)</a>
+                    <a href="https://gemini.google.com/gem/16BnAhE2HL8WfeT3VlkSNfeiJsP_sVTRQ?usp=sharing" target="_blank" class="btn-catalogo">🤖 AI Caderno Nestlé</a>
+                    <a href="https://datastudio.google.com/reporting/8ce3e64d-e554-4764-abc8-f3fb9b9c7a35" target="_blank" class="btn-catalogo btn-dash">📊 Dash SKU's</a>
+                    <!-- Este botão direciona diretamente para a aba Documentação -->
+                    <button onclick="openTab('documentacao')" class="btn-catalogo btn-dash">📄 Documentações</button>
+                </div>
+            </section>
 
-        <!-- Seção Fluxo de Atendimento -->
-        <section id="fluxo-atendimento">
-            <h2>Fluxo de Atendimento e Atividades</h2>
-            <p style="color: var(--text-muted);">Diretório de contatos internos para agilizar suas solicitações do dia a dia.</p>
-            
-            <div class="table-responsive">
-                <table class="fluxo-table">
-                    <thead>
-                        <tr>
-                            <th>Atividade / Solicitação</th>
-                            <th>Responsável / Setor</th>
-                            <th>E-mail Corporativo</th>
-                            <th>WhatsApp</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cadastro de clientes</td>
-                            <td><span class="tag-setor">GD</span><br>Francisco</td>
-                            <td><a href="mailto:gd@clavedistribuidora.com.br">✉️ gd@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
-                        </tr>
-                        <tr>
-                            <td>Alteração de limite de clientes</td>
-                            <td><span class="tag-setor">GD</span><br>Francisco</td>
-                            <td><a href="mailto:gd@clavedistribuidora.com.br">✉️ gd@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
-                        </tr>
-                        <tr>
-                            <td>Verificação sobre pedido faturado</td>
-                            <td><span class="tag-setor">CS</span><br>Washington</td>
-                            <td><a href="mailto:cs@clavedistribuidora.com.br">✉️ cs@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
-                        </tr>
-                        <tr>
-                            <td>Processos logísticos INTERNO</td>
-                            <td><span class="tag-setor">Logística</span><br>Guilherme</td>
-                            <td><a href="mailto:logistica@clavedistribuidora.com.br">✉️ logistica@clavedistribuidora.com.br</a></td>
-                            <td><span style="color: var(--text-muted); font-size: 0.9rem;">Não aplicável</span></td>
-                        </tr>
-                        <tr>
-                            <td>Desconto para clientes</td>
-                            <td><span class="tag-setor">Comercial</span><br>Layza </td>
-                            <td><a href="mailto:layza.bhering@clavedistribuidora.com.br">✉️ layza.bhering@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699931" target="_blank">📱 (31) 3669-9931</a></td>
-                        </tr>
-                        <tr>
-                            <td>Roteirização de entregas</td>
-                            <td><span class="tag-setor">Transporte</span><br>Victor</td>
-                            <td><a href="mailto:monitoramento@clavedistribuidora.com.br">✉️ monitoramento@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699933" target="_blank">📱 (31) 3669-9933</a></td>
-                        </tr>
-                        <tr>
-                            <td>Alteração de produtos nas bases</td>
-                            <td><span class="tag-setor">Comercial</span><br>Layza </td>
-                            <td><a href="mailto:layza.bhering@clavedistribuidora.com.br">✉️ layza.bhering@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699931" target="_blank">📱 (31) 3669-9931</a></td>
-                        </tr>
-                        <tr>
-                            <td>Assuntos relacionados ao DP/RH</td>
-                            <td><span class="tag-setor">RH</span><br>Laís </td>
-                            <td><a href="mailto:dp@clavedistribuidora.com.br">✉️ dp@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699929" target="_blank">📱 (31) 3669-9929</a></td>
-                        </tr>
-                        <tr>
-                            <td>Assuntos relacionados ao financeiro</td>
-                            <td><span class="tag-setor">Financeiro</span><br>Vitória</td>
-                            <td><a href="mailto:financeiro@clavedistribuidora.com.br">✉️ financeiro@clavedistribuidora.com.br</a></td>
-                            <td><a href="https://wa.me/553136699934" target="_blank">📱 (31) 3669-9934</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <!-- Seção Fluxo de Atendimento -->
+            <section id="fluxo-atendimento">
+                <h2>Fluxo de Atendimento e Atividades</h2>
+                <p style="color: var(--text-muted);">Diretório de contatos internos para agilizar suas solicitações do dia a dia.</p>
+                
+                <div class="table-responsive">
+                    <table class="fluxo-table">
+                        <thead>
+                            <tr>
+                                <th>Atividade / Solicitação</th>
+                                <th>Responsável / Setor</th>
+                                <th>E-mail Corporativo</th>
+                                <th>WhatsApp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Agrupamento GD -->
+                            <tr>
+                                <td>Cadastro de clientes</td>
+                                <td rowspan="2"><span class="tag-setor">GD</span><br>Francisco</td>
+                                <td rowspan="2"><a href="mailto:gd@clavedistribuidora.com.br">✉️ gd@clavedistribuidora.com.br</a></td>
+                                <td rowspan="2"><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
+                            </tr>
+                            <tr>
+                                <td>Alteração de limite de clientes</td>
+                            </tr>
 
-            <!-- Alerta de Urgência -->
-            <div class="alert-box">
-                <div style="font-size: 2rem;">⚠️</div>
+                            <!-- CS -->
+                            <tr>
+                                <td>Verificação sobre pedido faturado</td>
+                                <td><span class="tag-setor">CS</span><br>Washington</td>
+                                <td><a href="mailto:cs@clavedistribuidora.com.br">✉️ cs@clavedistribuidora.com.br</a></td>
+                                <td><a href="https://wa.me/553136699928" target="_blank">📱 (31) 3669-9928</a></td>
+                            </tr>
+
+                            <!-- Logística -->
+                            <tr>
+                                <td>Processos logísticos INTERNO</td>
+                                <td><span class="tag-setor">Logística</span><br>Guilherme</td>
+                                <td><a href="mailto:logistica@clavedistribuidora.com.br">✉️ logistica@clavedistribuidora.com.br</a></td>
+                                <td><span style="color: var(--text-muted); font-size: 0.9rem;">Não aplicável</span></td>
+                            </tr>
+
+                            <!-- Agrupamento Comercial (Layza) -->
+                            <tr>
+                                <td>Desconto para clientes</td>
+                                <td rowspan="2"><span class="tag-setor">Comercial</span><br>Layza</td>
+                                <td rowspan="2"><a href="mailto:layza.bhering@clavedistribuidora.com.br">✉️ layza.bhering@clavedistribuidora.com.br</a></td>
+                                <td rowspan="2"><a href="https://wa.me/553136699931" target="_blank">📱 (31) 3669-9931</a></td>
+                            </tr>
+                            <tr>
+                                <td>Alteração de produtos nas bases</td>
+                            </tr>
+
+                            <!-- Transporte -->
+                            <tr>
+                                <td>Roteirização de entregas</td>
+                                <td><span class="tag-setor">Transporte</span><br>Victor</td>
+                                <td><a href="mailto:monitoramento@clavedistribuidora.com.br">✉️ monitoramento@clavedistribuidora.com.br</a></td>
+                                <td><a href="https://wa.me/553136699933" target="_blank">📱 (31) 3669-9933</a></td>
+                            </tr>
+
+                            <!-- RH -->
+                            <tr>
+                                <td>Assuntos relacionados ao DP/RH</td>
+                                <td><span class="tag-setor">RH</span><br>Laís</td>
+                                <td><a href="mailto:dp@clavedistribuidora.com.br">✉️ dp@clavedistribuidora.com.br</a></td>
+                                <td><a href="https://wa.me/553136699929" target="_blank">📱 (31) 3669-9929</a></td>
+                            </tr>
+
+                            <!-- Financeiro -->
+                            <tr>
+                                <td>Assuntos relacionados ao financeiro</td>
+                                <td><span class="tag-setor">Financeiro</span><br>Vitória</td>
+                                <td><a href="mailto:financeiro@clavedistribuidora.com.br">✉️ financeiro@clavedistribuidora.com.br</a></td>
+                                <td><a href="https://wa.me/553136699934" target="_blank">📱 (31) 3669-9934</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Alerta de Urgência -->
+                <div class="alert-box">
+                    <div style="font-size: 2rem;">⚠️</div>
+                    <div>
+                        <strong>Atenção às Situações Urgentes:</strong><br>
+                        Para situações urgentes ou demandas que não se enquadrem nos itens acima da tabela, favor procurar diretamente o seu líder imediato (Supervisor).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Nestlé e Marcas -->
+            <section id="nestle-marcas">
+                <h2>Portfólio Estratégico Nestlé</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">
+                    Diretrizes de foco para as principais marcas distribuídas pela Clave Comercial.
+                </p>
+                
+                <div class="marcas-grid">
+                    <div class="marca-card">
+                        <h3>🍫 Garoto</h3>
+                        <p>Foco na distribuição e aumento de positivação em PDVs. Priorizar a linha de tabletes e bombons.</p>
+                    </div>
+                    
+                    <div class="marca-card">
+                        <h3>☕ Nestlé Professional</h3>
+                        <p>Foco em canais de Food Service (padarias, restaurantes e cafeterias). Soluções de alto valor agregado.</p>
+                    </div>
+                    
+                    <div class="marca-card">
+                        <h3>🐾 Purina</h3>
+                        <p>Expansão em petshops especializados e supermercados locais. Destaque para as linhas Pro Plan e Dog Chow.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ================= ABA 2: DOCUMENTAÇÃO ================= -->
+        <div id="documentacao" class="tab-content">
+            <section class="catalogo-container">
+                <h2>Documentação Oficial</h2>
+                <p style="color: var(--text-muted);">
+                    Consulte os manuais, políticas e guias de processos da Clave Distribuição.
+                </p>
+
+                <!-- IMAGEM ILUSTRATIVA / INFORMATIVA -->
+                <!-- Substitua o 'src' abaixo pela URL ou caminho da sua imagem -->
                 <div>
-                    <strong>Atenção às Situações Urgentes:</strong><br>
-                    Para situações urgentes ou demandas que não se enquadrem nos itens acima da tabela, favor procurar diretamente o seu líder imediato (Supervisor).
+                    <img src="./FLUXOGRAMA DE INDENIZAÇÃO (COMERCIAL).png">
                 </div>
-            </div>
-        </section>
 
-        <!-- Seção Nestlé e Marcas -->
-        <section id="nestle-marcas">
-            <h2>Portfólio Estratégico Nestlé</h2>
-            <p style="margin-bottom: 20px; color: var(--text-muted);">
-                Diretrizes de foco para as principais marcas distribuídas pela Clave Comercial.
-            </p>
-            
-            <div class="marcas-grid">
-                <div class="marca-card">
-                    <h3>🍫 Garoto</h3>
-                    <p>Foco na distribuição e aumento de positivação em PDVs. Priorizar a linha de tabletes e bombons.</p>
+                <!-- LINK DO DRIVE ABAIXO DA IMAGEM -->
+                <div class="botoes-container">
+                    <!-- Substitua o href abaixo pelo Link do seu Drive de Documentação -->
+                    <a href="https://drive.google.com/drive/folders/1t4mY7ZlaNykUKvTMtyWmsDFu75SG6AXk" target="_blank" class="btn-catalogo">
+                        📂 Acessar Pastas de Documentação (Google Drive)
+                    </a>
                 </div>
-                
-                <div class="marca-card">
-                    <h3>☕ Nestlé Professional</h3>
-                    <p>Foco em canais de Food Service (padarias, restaurantes e cafeterias). Soluções de alto valor agregado.</p>
-                </div>
-                
-                <div class="marca-card">
-                    <h3>🐾 Purina</h3>
-                    <p>Expansão em petshops especializados e supermercados locais. Destaque para as linhas Pro Plan e Dog Chow.</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
     </div>
 
@@ -355,6 +452,34 @@
     <footer>
         <p>&copy; 2026 Clave Distribuição | Intranet Oficial. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Script JS para alternar as abas -->
+    <script>
+        function openTab(tabId, event) {
+            // Esconde todas as abas
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove classe 'active' de todos os botões do menu
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Exibe a aba desejada
+            document.getElementById(tabId).classList.add('active');
+
+            // Atualiza o botão ativo no menu
+            if (event) {
+                event.currentTarget.classList.add('active');
+            } else {
+                // Caso seja acionado por um botão dentro da página
+                const targetBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+                if (targetBtn) targetBtn.classList.add('active');
+            }
+
+            // Rola suavemente até o topo do conteúdo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
